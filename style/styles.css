@@ -1,0 +1,225 @@
+:root {
+    --top-bar-height: 100px;
+}
+
+.rubik-font {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500; 
+  font-style: normal;
+}
+
+.rubik-mono-one-regular {
+  font-family: "Rubik Mono One", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 5px;
+    padding-top: var(--top-bar-height);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    position: relative;
+    color: rgb(33, 14, 14);
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0px;
+    border: 5px solid #f00;
+    pointer-events: none;
+    z-index: 2;
+}
+
+#topbar {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--top-bar-height);
+    background-color: white;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+section {
+    margin: 0;
+    padding: 0;
+}
+
+.fullsize {
+    height: calc(100vh - var(--top-bar-height) - 5px);
+}
+
+.intro {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 5fr 3fr;
+    grid-template-rows: 1fr;
+    background: linear-gradient(70deg,rgba(255, 48, 48, 0.5) 0%, rgba(237, 221, 83, 0) 100%);
+}
+
+#introtext {
+    line-height: 1.0em;
+    letter-spacing: 0.2em;
+    font-size: 12vw;
+    font-family: "Rubik Mono One";
+    text-shadow: 0.8vw 0.8vw #ff3030;
+}
+
+#introimg {
+    display: grid;
+    position: relative;
+    height: 100%;
+    justify-self: start;
+    img {
+        align-self: center;
+        max-width: 90%;
+    }
+}
+
+.content {
+    display: grid;
+    flex: 1;
+    background-color: #d6c8c8;
+}
+
+#outline {
+    transition: grid-template-columns 0.5s;
+    border: 5px dashed red;
+    margin: 10px;
+    padding: 5px;
+    display: grid;
+    flex: 1;
+    grid-template-areas:
+    "box-top box-top"
+    "box-left box-right";
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff; 
+    border: 5px solid #f00;
+    margin: 5px;
+    padding: 20px;
+}
+
+.closed {
+    div {
+        display: none;
+    }
+}
+
+.closed-title-vertical {
+    writing-mode: vertical-rl;
+    border-left: 5px solid #f00;
+    border-top: 5px solid #f00;
+    border-bottom: 0;
+}
+
+h1 {
+    border-left: 5px solid #f00;
+    border-bottom: 5px solid #f00;
+    border-top: 0;
+    margin: 0;
+    padding: 5px 10px;
+    font-family: "Rubik Mono One";
+    font-size: clamp(20px, 1.9vw, 2.3vw);
+    line-height: 1.0em;
+}
+
+.album:before {
+   content: "from: ";
+   margin-right: 0.5em;
+   color: #C75B5B;
+   font-size: 0.5em;
+}
+h2 {
+    border-bottom: 3px solid #f00;
+    width: 90%;
+}
+
+.text {
+    display: block;
+    margin-top: 10px;
+    font-family: "Rubik";
+    font-size: clamp(15px, 1.2vw, 1.5vw);
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.song {
+    margin: 1vw;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(70deg,rgba(255, 48, 48, 0.5) 0%, rgba(237, 221, 83, 0) 90%);
+    img {
+        margin: 1vw;
+        max-height: 10vw;
+        aspect-ratio: 1 / 1;
+    }
+    p {
+        height: 10%;
+        margin-left: 2vw;
+        font-size: clamp(15px, 3.9vw, 5.0vw);
+        font-weight: bold;
+        text-shadow: 0.2vw 0.2vw #ff3030;
+        align-self: center;
+    }
+}
+
+.top-open {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 0fr;
+} 
+
+.left-open {
+    grid-template-columns: 10fr 1fr;
+    grid-template-rows: 0fr 1fr;
+} 
+
+.right-open {
+    grid-template-columns: 1fr 10fr;
+    grid-template-rows: 0fr 1fr;
+} 
+
+
+#favicon {
+    position: relative;
+    height: 100%;
+    img {
+        height: 80%;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --top-bar-height: 75px;
+    }
+    .text {
+        height: 40vh;
+    }
+}
